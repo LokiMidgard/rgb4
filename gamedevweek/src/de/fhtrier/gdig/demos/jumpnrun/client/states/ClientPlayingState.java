@@ -226,24 +226,24 @@ public class ClientPlayingState extends PlayingState {
 
 		// Game Logic Events
 		if (localState == LocalState.PLAYING) {
-			 return handleGameLogicCommands(cmd);
+			return handleGameLogicCommands(cmd);
 		}
 
 		return false;
 	}
 
 	private boolean handleGameLogicCommands(INetworkCommand cmd) {
-		
+
 		if (cmd instanceof SendKill) {
 			SendKill killCommand = (SendKill) cmd;
 
 			Player player = getLevel().getPlayer(killCommand.getPlayerId());
 			player.die();
-			
-// 			not needed: DiedEvent sets Statistics --> calculated by server
-//			Player killer = getLevel().getPlayer(killCommand.getKillerId());
-//			Event dieEvent = new PlayerDiedEvent(player, killer);
-//			EventManager.addEvent(dieEvent);
+
+			// not needed: DiedEvent sets Statistics --> calculated by server
+			// Player killer = getLevel().getPlayer(killCommand.getKillerId());
+			// Event dieEvent = new PlayerDiedEvent(player, killer);
+			// EventManager.addEvent(dieEvent);
 
 			return true;
 		}
@@ -287,20 +287,20 @@ public class ClientPlayingState extends PlayingState {
 			player.setPlayerCondition(sspn.getPlayerCondition());
 			return true;
 		}
-		
+
 		if (cmd instanceof SendTeamCondition) {
 			SendTeamCondition stc = (SendTeamCondition) cmd;
-			
+
 			Team team = Team.getTeamById(stc.getTeamId());
-			
+
 			if (team != null) {
 				team.setKills(stc.getKills());
 				team.setDeaths(stc.getDeaths());
 			}
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
 

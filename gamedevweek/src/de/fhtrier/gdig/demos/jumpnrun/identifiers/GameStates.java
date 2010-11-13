@@ -8,4 +8,5 @@ public class GameStates {
 	public static final int PLAYING = 4;
 	public static final int SERVER_LOBBY = 5;
 	public static final int CLIENT_CREDITS = 6;
+	public static final int GAMEOVER = 7;
 }

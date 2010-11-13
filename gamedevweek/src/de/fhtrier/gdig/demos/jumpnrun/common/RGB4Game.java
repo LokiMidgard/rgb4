@@ -13,7 +13,7 @@ public abstract class RGB4Game extends StateBasedGame implements
 		INetworkCommandListener {
 	public RGB4Game(String title) {
 		super(title);
-
+		instance = this;
 	}
 
 	// network commands are passed through to the active gamestate
@@ -21,7 +21,7 @@ public abstract class RGB4Game extends StateBasedGame implements
 	public void notify(final INetworkCommand cmd) {
 
 		if (Constants.Debug.networkDebug) {
-			
+
 			if (Constants.Debug.showProtocolCommandsOnly) {
 				if (cmd instanceof ProtocolCommand) {
 					Log.debug("Network-Process: " + cmd.toString());
@@ -36,5 +36,11 @@ public abstract class RGB4Game extends StateBasedGame implements
 			if (currentState instanceof INetworkCommandListener)
 				((INetworkCommandListener) currentState).notify(cmd);
 		}
+	}
+
+	private static RGB4Game instance;
+
+	public static RGB4Game getInstance() {
+		return instance;
 	}
 }

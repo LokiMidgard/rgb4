@@ -9,6 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
 import de.fhtrier.gdig.demos.jumpnrun.client.states.ClientCreditsState;
+import de.fhtrier.gdig.demos.jumpnrun.client.states.ClientGameOverState;
 import de.fhtrier.gdig.demos.jumpnrun.client.states.ClientHostServerState;
 import de.fhtrier.gdig.demos.jumpnrun.client.states.ClientLobbyState;
 import de.fhtrier.gdig.demos.jumpnrun.client.states.ClientMenuState;
@@ -28,8 +29,9 @@ public class ClientGame extends RGB4Game {
 
 	public ClientGame() throws SlickException {
 		super(Assets.Config.GameTitle);
-		
-		System.setProperty("java.util.logging.config.file", "content/logging.properties");
+
+		System.setProperty("java.util.logging.config.file",
+				"content/logging.properties");
 		try {
 			LogManager.getLogManager().readConfiguration();
 		} catch (SecurityException e) {
@@ -44,27 +46,27 @@ public class ClientGame extends RGB4Game {
 		GameSoundManager.init(true);
 
 		Constants.GamePlayConstants c1 = new Constants.GamePlayConstants();
-		
+
 		Constants.Debug c3 = new Constants.Debug();
-		
+
 		Constants.SoundConfig c4 = new Constants.SoundConfig();
-		
-		Configuration.showEditor("ClientSettings",
-				new JPanel[] {
-					c1.getEdittingPanel(),
-					c3.getEdittingPanel(),
-					c4.getEdittingPanel()}
-		);
+
+		Configuration.showEditor(
+				"ClientSettings",
+				new JPanel[] { c1.getEdittingPanel(), c3.getEdittingPanel(),
+						c4.getEdittingPanel() });
 	}
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		// container.setMouseCursor(Assets.Config.AssetGuiPath+"/gui-cursor.png", 16,16);
+		// container.setMouseCursor(Assets.Config.AssetGuiPath+"/gui-cursor.png",
+		// 16,16);
 		addState(new ClientMenuState(this));
 		addState(new ClientSelectServerState());
 		addState(new ClientHostServerState(this));
 		addState(new ClientLobbyState());
 		addState(new ClientPlayingState());
 		addState(new ClientCreditsState());
+		addState(new ClientGameOverState());
 	}
 }
