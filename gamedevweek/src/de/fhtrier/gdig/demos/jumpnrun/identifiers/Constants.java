@@ -16,7 +16,7 @@ public class Constants {
 		public static int winningKills_Deathmatch = 10;
 		public static int winningKills_TeamDeathmatch = 25;
 		
-		public static boolean friendlyFire = true; // if true you can damage team-mates
+		public static boolean friendlyFire = false; // if true you can damage team-mates
 
 		public static float shotSpeed = 600.0f;
 		public static float shotCooldown = 200.0f;
@@ -54,7 +54,7 @@ public class Constants {
 	public static class DoomsDayDeviceConfig extends Configuration {
 		public static int soundPrecarriage = 6000;
 		public static int minChargeTime = 20;
-		public static int maxChargeTime = 21;
+		public static int maxChargeTime = 40;
 		public static float size = 400f;
 		public static float speed = 400f;
 		public static float hitSize = 120f;
@@ -70,7 +70,7 @@ public class Constants {
 	}
 	
 	public static class Debug extends Configuration {
-		public static boolean showDialogs = true;
+		public static boolean showDialogs = false;
 		
 		@CommandlineParameter("noRender")
 		public static boolean doNotRender = false;
@@ -107,7 +107,7 @@ public class Constants {
 		public static int logicLayer = 3;
 		public static float initialZoom = 0.75f;
 		// public static float initialZoom = 1.0f;
-		public static float outOfLevelDistanceForProjectiles = 500.0f;
+		public static float outOfLevelDistance = 500.0f;
 	}
 	
 	public static class GameTypes extends Configuration {
